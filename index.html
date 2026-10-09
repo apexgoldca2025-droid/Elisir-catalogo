@@ -3,144 +3,709 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX GOLD | Tienda Online</title>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- FontAwesome Icons -->
+    <title>Catálogo Oficial | APEX GOLD</title>
+    <!-- Google Fonts & FontAwesome para iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        logo: ['Anton', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: '#c29b38',
-                        elisirDark: '#080d19',
-                        elisirBlue: '#0c1b33',
-                        elisirLightBg: '#f8f9fa'
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 30%, #173860 0%, #080d1a 80%);
-        }
-        
-        .product-shadow {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        :root {
+            --bg-primary: #0a1128;
+            --bg-secondary: #0f1c3f;
+            --accent-gold: #d4af37;
+            --accent-gold-light: #f3e5ab;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --whatsapp-green: #25d366;
+            --whatsapp-hover: #1ebd59;
+            --card-bg: #ffffff;
+            --card-text: #0f1c3f;
         }
 
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Announcement Bar */
+        .announcement-bar {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 8px 10px;
+            text-transform: uppercase;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .menu-btn, .icon-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .cart-icon-container {
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-gold);
+            color: #000;
+            font-size: 10px;
+            font-weight: 800;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 40px 20px 30px;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 25px;
+            line-height: 1.5;
+        }
+
+        /* Hero Images Grid Showcase */
+        .hero-gallery {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .hero-img-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 6px;
+            min-width: 100px;
+            height: 125px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+        }
+
+        .hero-img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Features Bar */
+        .features-bar {
+            background: #ffffff;
+            color: #000;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 10px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature-item i {
+            font-size: 14px;
+        }
+
+        /* BCV Widget Section */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .bcv-widget {
+            background: linear-gradient(135deg, #131f3f 0%, #070c1b 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .bcv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .bcv-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bcv-icon {
+            background-color: rgba(212, 175, 55, 0.15);
+            color: var(--accent-gold);
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .bcv-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+        }
+
+        .bcv-date {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .bcv-badge {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .bcv-badge span {
+            width: 6px;
+            height: 6px;
+            background-color: #34d399;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .bcv-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 15px;
+        }
+
+        .bcv-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .bcv-rate {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent-gold-light);
+        }
+
+        .sync-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sync-btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+            border-color: var(--accent-gold);
+        }
+
+        .sync-btn.rotating i {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Catalog Section */
+        .catalog-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .catalog-title {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .catalog-divider {
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            color: #111;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-img-container {
+            position: relative;
+            background: #f8fafc;
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .product-img-container img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #ffffff;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            color: #64748b;
+            z-index: 2;
+        }
+
+        .wishlist-btn:hover {
+            color: #ef4444;
+        }
+
+        .product-badge-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #000;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .product-info {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-tags-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .tag-pill {
+            background: #000;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .tag-pill.outline {
+            background: transparent;
+            color: #000;
+            border: 1px solid #cbd5e1;
+        }
+
+        .product-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            min-height: 40px;
+        }
+
+        .product-pricing {
+            margin-top: auto;
+            margin-bottom: 14px;
+        }
+
+        .price-usd {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .price-usd span.bcv-tag {
+            font-size: 9px;
+            background: #e2e8f0;
+            color: #475569;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .price-bs {
+            font-size: 12px;
+            color: #0d9488;
+            font-weight: 700;
+            margin-top: 3px;
+        }
+
+        .whatsapp-btn {
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 11px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+        }
+
+        .whatsapp-btn:hover {
+            background-color: var(--whatsapp-hover);
+        }
+
+        .whatsapp-btn i {
+            font-size: 16px;
+        }
+
+        /* Footer Creator Section */
+        .brand-footer {
+            background: linear-gradient(135deg, #0f1c3f 0%, #070c1b 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .founder-badge-icon {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--accent-gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 20px;
+        }
+
+        .founder-name {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .founder-quote {
+            font-size: 13px;
+            color: var(--text-muted);
+            max-width: 450px;
+            margin: 0 auto 15px;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .founder-sign {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        /* Modal para imagen ampliada */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            color: #000;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            height: 250px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .modal-price {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0d9488;
+            margin-bottom: 15px;
         }
     </style>
 </head>
-<body class="bg-elisirLightBg text-slate-900 font-sans antialiased selection:bg-black selection:text-white pb-12">
+<body>
+
+    <!-- Barra Superior -->
+    <div class="announcement-bar">
+        ENVÍO GRATIS A TODA VENEZUELA
     </div>
 
-    <!-- 1. BARRA SUPERIOR DE ANUNCIOS -->
-    <div class="bg-black text-white text-[11px] sm:text-xs font-bold tracking-widest text-center py-2 px-4 uppercase border-b border-neutral-800">
-        ENVÍOS POR MRW A TODA VENEZUELA
-    </div>
-
-    <!-- 2. ENCABEZADO / HEADER -->
-    <header class="bg-black text-white sticky top-0 z-40 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
-            <!-- Mobile Menu Icon -->
-            <button class="text-white hover:text-gray-300 transition-colors p-1" aria-label="Abrir Menú">
-                <i class="fa-solid fa-bars text-xl"></i>
-            </button>
-
-            <!-- Logo APEX GOLD -->
-            <a href="#" class="font-logo text-3xl sm:text-4xl tracking-wider text-white uppercase text-center flex-1 mx-4">
-                APEX GOLD
-            </a>
-
-    <!-- 3. SECCIÓN PRINCIPAL HERO -->
-    <section class="relative hero-gradient text-white overflow-hidden pt-8 pb-12 px-4 sm:px-8">
-        <div class="absolute inset-0 bg-blue-600/10 backdrop-blur-3xl pointer-events-none"></div>
-
-        <div class="max-w-4xl mx-auto text-left relative z-10">
-            <div class="flex items-center space-x-2 mb-3">
-                <div class="w-8 h-[2px] bg-gold"></div>
-                <span class="text-xs font-bold tracking-widest text-gold uppercase">FABRICANTES DIRECTOS</span>
+    <!-- Navegación -->
+    <header>
+        <div class="navbar">
+            <div class="nav-left">
+                <button class="menu-btn"><i class="fa-solid fa-bars"></i></button>
             </div>
-
-            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-none mb-4 uppercase text-white">
-                GORRAS DE ALTA CALIDAD<br />ESTILO Y RESISTENCIA.
-            </h1>
-
-            <p class="text-gray-300 text-sm sm:text-lg max-w-md mb-6 font-light leading-relaxed">
-                Somos fabricantes de gorras personalizadas con bordados 3D y materiales de alta calidad.
-            </p>
-
-            <div class="my-6 relative flex justify-center items-center py-2">
-                <div class="flex items-end justify-center space-x-2 sm:space-x-4 max-w-md w-full">
-                    <img src="365575.png" 
-                         alt="Gorra Oficial Superior EJB" class="w-1/3 rounded-lg shadow-2xl object-cover h-36 sm:h-48 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-                    <img src="398177 (1).png" 
-                         alt="Gorra Oficial Sueprior FANB" class="w-2/5 rounded-lg shadow-2xl object-cover h-44 sm:h-56 z-10 transform scale-105 border border-cyan-500/30">
-                    <img src="398316.png" 
-                         alt="Gorra Camuflada REDI CENTRAL" class="w-1/3 rounded-lg shadow-2xl object-cover h-36 sm:h-48 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+            <a href="#" class="logo">APEX GOLD</a>
+            <div class="nav-right">
+                <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="cart-icon-container">
+                    <button class="icon-btn"><i class="fa-solid fa-bag-shopping"></i></button>
+                    <span class="cart-badge">0</span>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- 4. BARRA DE BENEFICIOS -->
-    <section class="bg-white border-y border-gray-200 py-4 px-2">
-        <div class="max-w-5xl mx-auto grid grid-cols-3 divide-x divide-gray-200 text-center">
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 px-2">
-                <i class="fa-regular fa-circle-check text-black text-lg sm:text-xl"></i>
-                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-tight text-gray-900">CALIDAD PREMIUM</span>
-            </div>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 px-2">
-                <i class="fa-solid fa-truck text-black text-lg sm:text-xl"></i>
-                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-tight text-gray-900">ENVÍOS POR MRW</span>
-            </div>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 px-2">
-                <i class="fa-solid fa-shield-halved text-black text-lg sm:text-xl"></i>
-                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-tight text-gray-900">COMPRA SEGURA</span>
-            </div>
+    <!-- Banner Principal -->
+    <section class="hero">
+        <div class="hero-subtitle">PERFUMERÍA ORIGINAL</div>
+        <h1 class="hero-title">CALIDAD PREMIUM<br>TE RECUERDEN.</h1>
+        <p class="hero-desc">Fragancias 100% originales con envío gratis a toda Venezuela.</p>
+        
+        <div class="hero-gallery">
+            <div class="hero-img-card"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=300" alt="Perfume 1"></div>
+            <div class="hero-img-card"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=300" alt="Perfume 2"></div>
+            <div class="hero-img-card"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=300" alt="Perfume 3"></div>
         </div>
     </section>
 
-    <!-- BANNER CEO & CREADOR DE LA MARCA -->
-    <section class="bg-black text-amber-400 border-y border-yellow-600/40 py-8 px-4 shadow-2xl my-12">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            <div class="flex items-center space-x-4">
-                <div class="w-12 h-12 rounded-full border-2 border-amber-400/80 p-0.5 flex-shrink-0 bg-neutral-900 flex items-center justify-center shadow-lg">
-                    <i class="fa-solid fa-crown text-amber-400 text-xl"></i>
+    <!-- Barra de Beneficios -->
+    <div class="features-bar">
+        <div class="feature-item"><i class="fa-solid fa-circle-check"></i> CALIDAD PREMIUM</div>
+        <div class="feature-item"><i class="fa-solid fa-truck-fast"></i> ENVÍOS POR MRW</div>
+        <div class="feature-item"><i class="fa-solid fa-shield-halved"></i> COMPRA SEGURA</div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="container">
+
+        <!-- Widget de Tasa BCV Automática -->
+        <div class="bcv-widget">
+            <div class="bcv-header">
+                <div class="bcv-title-group">
+                    <div class="bcv-icon"><i class="fa-solid fa-landmark"></i></div>
+                    <div>
+                        <div class="bcv-title">TASA OFICIAL BCV</div>
+                        <div class="bcv-date" id="bcv-date-text">Actualizando...</div>
+                    </div>
                 </div>
+                <div class="bcv-badge"><span></span> Automático</div>
+            </div>
+            <div class="bcv-body">
                 <div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-[0.25em] text-yellow-500/80 block mb-0.5">ALFREDO BELANDRIA</span>
-                    <h3 class="text-base sm:text-lg font-bold text-amber-300 uppercase tracking-wider">
-                        CEO & CREADOR DE LA MARCA
-                    </h3>
+                    <div class="bcv-label">Precio Actual del Dólar</div>
+                    <div class="bcv-rate" id="bcv-rate-display">Cargando...</div>
                 </div>
+                <button class="sync-btn" id="sync-rate-btn" onclick="fetchBCVRate()" title="Actualizar Tasa">
+                    <i class="fa-solid fa-rotate"></i>
+                </button>
             </div>
-            <div class="max-w-md border-t md:border-t-0 md:border-l border-amber-500/30 pt-3 md:pt-0 md:pl-6">
-                <p class="text-xs sm:text-sm italic font-serif text-amber-200/90 leading-relaxed">
-                    "Fabricadas con la mejor selección de materiales y acabados de primera, nuestras gorras representan el equilibrio perfecto entre durabilidad y diseño. Explora nuestro catálogo y descubre el accesorio definitivo que estabas buscando en Venezuela."
-                </p>
-            </div>
+        </div>
 
-  
+        <!-- Encabezado del Catálogo -->
+        <div class="catalog-header">
+            <h2 class="catalog-title">Catálogo</h2>
+            <div class="catalog-divider"></div>
+        </div>
+
+        <!-- Grilla de Productos -->
+        <div class="products-grid" id="products-container">
+            <!-- Los productos se cargan dinámicamente mediante JavaScript -->
+        </div>
+
+    </div>
+
+    <!-- Pie de página del creador -->
+    <footer class="brand-footer">
+        <div class="founder-badge-icon">
+            <i class="fa-solid fa-crown"></i>
+        </div>
+        <div class="founder-name">ALFREDO BELANDRIA</div>
+        <div class="founder-quote">"Elevando el estándar de la perfumería original en Venezuela. Cada fragancia está cuidadosamente seleccionada para garantizar autenticidad y elegancia en cada gota."</div>
+        <div class="founder-sign">— ALFREDO BELANDRIA & CEO DE APEX GOLD</div>
+    </footer>
+
+    <!-- Modal de vista rápida opcional -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <img id="modal-img" class="modal-img" src="" alt="">
+            <div id="modal-title" class="modal-title"></div>
+            <div id="mo
