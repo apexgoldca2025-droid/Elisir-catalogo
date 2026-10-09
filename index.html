@@ -59,7 +59,7 @@
     <div id="admin-bar" class="hidden bg-amber-500 text-black px-4 py-2 text-xs font-bold flex items-center justify-between sticky top-0 z-50 shadow-md">
         <div class="flex items-center space-x-2">
             <i class="fa-solid fa-user-shield text-base"></i>
-            <span>MODO ADMINISTRADOR ACTIVADO (Puedes cambiar imágenes de los productos)</span>
+            <span>MODO ADMINISTRADOR ACTIVADO</span>
         </div>
         <button onclick="logoutAdmin()" class="bg-black text-white px-3 py-1 rounded-lg hover:bg-neutral-800 transition-colors text-[11px] uppercase tracking-wider">
             Cerrar Sesión
@@ -150,48 +150,6 @@
         </div>
     </section>
 
-    <!-- 5. WIDGET AUTOMÁTICO DE TASA DÓLAR BCV -->
-    <section class="max-w-4xl mx-auto px-4 mt-8">
-        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-black text-white p-5 rounded-xl shadow-md border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-3.5 w-full sm:w-auto">
-                <div class="bg-yellow-500/20 p-3 rounded-lg border border-yellow-500/30 flex-shrink-0">
-                    <i class="fa-solid fa-building-columns text-yellow-400 text-2xl"></i>
-                </div>
-                <div>
-                    <div class="flex items-center space-x-2">
-                        <span class="text-xs font-bold uppercase tracking-wider text-yellow-400">Tasa Oficial BCV</span>
-                        <span id="bcv-status" class="bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-green-500/30 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Actualizando...
-                        </span>
-                    </div>
-                    <p class="text-xs text-gray-400" id="bcv-date-display">Consultando tasa oficial en tiempo real...</p>
-                </div>
-            </div>
-
-            <div class="flex items-center justify-between sm:justify-end space-x-3 w-full sm:w-auto border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-700/60">
-                <div class="bg-slate-900/90 border border-slate-700 px-4 py-2 rounded-lg text-center">
-                    <div class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Precio Actual</div>
-                    <div class="text-lg font-black text-yellow-400" id="bcv-rate-text">Cargando...</div>
-                </div>
-                <button onclick="fetchBCVRate(true)" title="Refrescar tasa BCV" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 p-3 rounded-lg text-gray-300 hover:text-white transition-all active:scale-95">
-                    <i id="bcv-refresh-icon" class="fa-solid fa-arrows-rotate text-sm"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. SECCIÓN DE PRODUCTOS ("CATÁLOGO DE GORRAS") -->
-    <section id="catalogo-gorras" class="max-w-5xl mx-auto px-3 sm:px-6 py-10">
-        <div class="text-center mb-8">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Catálogo de Gorras</h2>
-            <div class="w-12 h-1 bg-gold mx-auto mt-2 rounded-full"></div>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6" id="products-container">
-            <!-- Renderizado dinámico vía JavaScript -->
-        </div>
-    </section>
-
     <!-- BANNER CEO & CREADOR DE LA MARCA -->
     <section class="bg-black text-amber-400 border-y border-yellow-600/40 py-8 px-4 shadow-2xl my-12">
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
@@ -211,144 +169,5 @@
                     "Fabricadas con la mejor selección de materiales y acabados de primera, nuestras gorras representan el equilibrio perfecto entre durabilidad y diseño. Explora nuestro catálogo y descubre el accesorio definitivo que estabas buscando en Venezuela."
                 </p>
             </div>
-        </div>
-    </section>
 
-    <!-- 7. MODAL / LIGHTBOX PARA AMPLIAR IMÁGENES -->
-    <div id="image-modal" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300" onclick="closeImageModal()">
-        <div class="relative max-w-lg w-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-white/20" onclick="event.stopPropagation()">
-            <button onclick="closeImageModal()" class="absolute top-3 right-3 bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-black transition-colors z-10">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            <div class="p-6 bg-slate-50 flex items-center justify-center">
-                <img id="modal-img" src="" alt="Vista previa" class="max-h-[60vh] w-auto object-contain rounded-lg">
-            </div>
-            <div class="p-5 bg-white border-t border-gray-100">
-                <h3 id="modal-title" class="text-lg font-bold text-slate-900 mb-1"></h3>
-                <p id="modal-price" class="text-gold font-black text-xl mb-3"></p>
-                <a id="modal-whatsapp-btn" href="#" target="_blank" 
-                   class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center space-x-2 transition-colors">
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
-                    <span>Comprar por WhatsApp</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- 8. MODAL DE INICIO DE SESIÓN (LOGIN) -->
-    <div id="login-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeLoginModal()">
-        <div class="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl relative border border-gray-100" onclick="event.stopPropagation()">
-            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            
-            <div class="text-center mb-6">
-                <div class="w-12 h-12 bg-black text-amber-400 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <i class="fa-solid fa-user-lock text-xl"></i>
-                </div>
-                <h3 class="text-2xl font-black text-slate-900">Acceso Administrador</h3>
-                <p class="text-xs text-gray-500 mt-1">Ingresa tus credenciales para editar productos</p>
-            </div>
-
-            <form onsubmit="handleLogin(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Usuario</label>
-                    <input type="text" id="username" required placeholder="admin"
-                           class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-sm transition-all">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Contraseña</label>
-                    <input type="password" id="password" required placeholder="••••••••"
-                           class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-sm transition-all">
-                </div>
-                
-                <div id="login-error" class="text-red-500 text-xs text-center font-bold hidden">
-                    Usuario o contraseña incorrectos. (Prueba: admin / 1234)
-                </div>
-
-                <button type="submit" class="w-full bg-black hover:bg-neutral-800 text-amber-400 font-bold py-3 rounded-xl transition-colors text-sm shadow-md uppercase tracking-wider">
-                    Iniciar Sesión
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- 9. MODAL PARA CAMBIAR LA IMAGEN DE UN PRODUCTO -->
-    <div id="edit-image-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeEditImageModal()">
-        <div class="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl relative" onclick="event.stopPropagation()">
-            <button onclick="closeEditImageModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-
-            <h3 class="text-xl font-bold text-slate-900 mb-2">Cambiar Imagen</h3>
-            <p id="edit-product-name" class="text-xs text-gray-500 mb-4 font-semibold"></p>
-
-            <form onsubmit="saveProductImage(event)" class="space-y-4">
-                <input type="hidden" id="edit-product-id">
-                <div>
-                    <label class="block text-xs font-bold uppercase text-gray-700 mb-1">URL de la nueva imagen</label>
-                    <input type="url" id="edit-image-url" required placeholder="https://ejemplo.com/imagen.jpg"
-                           class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm">
-                </div>
-
-                <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 text-center">
-                    <span class="text-[11px] text-gray-500 block mb-2 font-bold">Vista previa:</span>
-                    <img id="edit-image-preview" src="" alt="Previsualización" class="h-32 mx-auto object-contain rounded-lg hidden">
-                </div>
-
-                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-bold py-3 rounded-xl transition-colors text-sm uppercase tracking-wider">
-                    Guardar Imagen
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        const PHONE_NUMBER = "584120000000"
-
-        let products = [
-            {
-                id: 1,
-                name: "Gorra EJB Táctica Superior",
-                priceUSD: 17.41,
-                size: "Ajustable",
-                badge: "Popular",
-                freeShipping: true,
-                image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600&auto=format&fit=crop&q=80"
-            },
-            {
-                id: 2,
-                name: "Gorra Camuflada FANB",
-                priceUSD: 24.50,
-                size: "Ajustable",
-                badge: "Premium",
-                freeShipping: true,
-                image: "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?w=600&auto=format&fit=crop&q=80"
-            },
-            {
-                id: 3,
-                name: "Gorra Militar REDI Central",
-                priceUSD: 20.00,
-                size: "Ajustable",
-                badge: null,
-                freeShipping: true,
-                image: "https://images.unsplash.com/photo-1534215754734-18e55d13e346?w=600&auto=format&fit=crop&q=80"
-            },
-            {
-                id: 4,
-                name: "Gorra Táctica Negra Apex",
-                priceUSD: 18.00,
-                size: "Ajustable",
-                badge: "Nuevo",
-                freeShipping: true,
-                image: "https://images.unsplash.com/photo-1521369984125-a4ec30be59fe?w=600&auto=format&fit=crop&q=80"
-            }
-        ];
-
-        const favorites = new Set();
-
-        async function fetchBCVRate(manualTrigger = false) {
-            const refreshIcon = document.getElementById('bcv-refresh-icon');
-            const dateDisplay = document.getElementById('bcv-date-display');
-            const rateText = document.getElementById('bcv-rate-text');
-            const statusBadge = docum
+  
