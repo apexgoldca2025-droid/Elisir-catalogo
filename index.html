@@ -1,0 +1,482 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELISIR | Perfumería Original Venezuela</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        logo: ['Anton', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: '#c29b38',
+                        elisirDark: '#080d19',
+                        elisirBlue: '#0c1b33',
+                        elisirLightBg: '#f8f9fa'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 30%, #173860 0%, #080d1a 80%);
+        }
+        
+        .product-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-elisirLightBg text-slate-900 font-sans antialiased selection:bg-black selection:text-white pb-12">
+
+    <!-- 1. BARRA SUPERIOR DE ANUNCIOS -->
+    <div class="bg-black text-white text-[11px] sm:text-xs font-bold tracking-widest text-center py-2 px-4 uppercase border-b border-neutral-800">
+        ENVÍO GRATIS A TODA VENEZUELA
+    </div>
+
+    <!-- 2. ENCABEZADO / HEADER -->
+    <header class="bg-black text-white sticky top-0 z-40 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+            <!-- Mobile Menu Icon -->
+            <button class="text-white hover:text-gray-300 transition-colors p-1" aria-label="Abrir Menú">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+
+            <!-- Logo ELISIR -->
+            <a href="#" class="font-logo text-3xl sm:text-4xl tracking-wider text-white uppercase text-center flex-1 mx-4">
+                ELISIR
+            </a>
+
+            <!-- Right Icons (Search & Cart) -->
+            <div class="flex items-center space-x-4">
+                <button class="text-white hover:text-gray-300 transition-colors p-1" aria-label="Buscar">
+                    <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                </button>
+                <button class="text-white hover:text-gray-300 transition-colors p-1 relative" aria-label="Favoritos">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-count" class="absolute -top-1.5 -right-2 bg-gold text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. SECCIÓN PRINCIPAL HERO (SIN RECUADRO "TU PRÓXIMA FRAGANCIA") -->
+    <section class="relative hero-gradient text-white overflow-hidden pt-8 pb-12 px-4 sm:px-8">
+        <!-- Ambient lighting graphics -->
+        <div class="absolute inset-0 bg-blue-600/10 backdrop-blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-left relative z-10">
+            <!-- Golden Top Tag Line -->
+            <div class="flex items-center space-x-2 mb-3">
+                <div class="w-8 h-[2px] bg-gold"></div>
+                <span class="text-xs font-bold tracking-widest text-gold uppercase">PERFUMERÍA ORIGINAL</span>
+            </div>
+
+            <!-- Big Title -->
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-none mb-4 uppercase text-white">
+                HAZ QUE<br />TE RECUERDEN.
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-gray-300 text-sm sm:text-lg max-w-md mb-6 font-light leading-relaxed">
+                Fragancias 100% originales con envío gratis a toda Venezuela.
+            </p>
+
+            <!-- Perfume Banner Image Showcase -->
+            <div class="my-6 relative flex justify-center items-center py-2">
+                <div class="flex items-end justify-center space-x-2 sm:space-x-4 max-w-md w-full">
+                    <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&auto=format&fit=crop&q=80" 
+                         alt="Fragancia Freeze" class="w-1/3 rounded-lg shadow-2xl object-cover h-36 sm:h-48 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&auto=format&fit=crop&q=80" 
+                         alt="Fragancia Rayhaan" class="w-2/5 rounded-lg shadow-2xl object-cover h-44 sm:h-56 z-10 transform scale-105 border border-cyan-500/30">
+                    <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=400&auto=format&fit=crop&q=80" 
+                         alt="Fragancia Odyssey" class="w-1/3 rounded-lg shadow-2xl object-cover h-36 sm:h-48 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. BARRA DE BENEFICIOS (TRUST BADGES) -->
+    <section class="bg-white border-y border-gray-200 py-4 px-2">
+        <div class="max-w-5xl mx-auto grid grid-cols-3 divide-x divide-gray-200 text-center">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 px-2">
+                <i class="fa-regular fa-circle-check text-black text-lg sm:text-xl"></i>
+                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-tight text-gray-900">100% ORIGINALES</span>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 px-2">
+                <i class="fa-solid fa-truck text-black text-lg sm:text-xl"></i>
+                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-tight text-gray-900">ENVÍO GRATIS</span>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 px-2">
+                <i class="fa-solid fa-shield-halved text-black text-lg sm:text-xl"></i>
+                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-tight text-gray-900">COMPRA SEGURA</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. WIDGET AUTOMÁTICO DE TASA DÓLAR BCV -->
+    <section class="max-w-4xl mx-auto px-4 mt-8">
+        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-black text-white p-5 rounded-xl shadow-md border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+            
+            <div class="flex items-center space-x-3.5 w-full sm:w-auto">
+                <div class="bg-yellow-500/20 p-3 rounded-lg border border-yellow-500/30 flex-shrink-0">
+                    <i class="fa-solid fa-building-columns text-yellow-400 text-2xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-yellow-400">Tasa Oficial BCV</span>
+                        <span id="bcv-status" class="bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-green-500/30 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Actualizando...
+                        </span>
+                    </div>
+                    <p class="text-xs text-gray-400" id="bcv-date-display">Consultando tasa oficial en tiempo real...</p>
+                </div>
+            </div>
+
+            <!-- Tasa Valor Display & Refresh Button -->
+            <div class="flex items-center justify-between sm:justify-end space-x-3 w-full sm:w-auto border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-700/60">
+                <div class="bg-slate-900/90 border border-slate-700 px-4 py-2 rounded-lg text-center">
+                    <div class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Monto Oficial</div>
+                    <div class="text-lg font-black text-yellow-400" id="bcv-rate-text">Cargando...</div>
+                </div>
+                <button onclick="fetchBCVRate(true)" title="Refrescar tasa BCV" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 p-3 rounded-lg text-gray-300 hover:text-white transition-all active:scale-95">
+                    <i id="bcv-refresh-icon" class="fa-solid fa-arrows-rotate text-sm"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. SECCIÓN DE PRODUCTOS ("MÁS VENDIDOS") -->
+    <section id="catalogo" class="max-w-5xl mx-auto px-3 sm:px-6 py-10">
+        <!-- Title -->
+        <div class="text-center mb-8">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Más vendidos</h2>
+            <div class="w-12 h-1 bg-gold mx-auto mt-2 rounded-full"></div>
+        </div>
+
+        <!-- 2 Column Responsive Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6" id="products-container">
+            <!-- Renderizado dinámico vía JavaScript -->
+        </div>
+    </section>
+
+    <!-- BANNER CEO & CREADOR DE LA MARCA -->
+    <section class="bg-black text-amber-400 border-y border-yellow-600/40 py-8 px-4 shadow-2xl my-12">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-full border-2 border-amber-400/80 p-0.5 flex-shrink-0 bg-neutral-900 flex items-center justify-center shadow-lg">
+                    <i class="fa-solid fa-crown text-amber-400 text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-[0.25em] text-yellow-500/80 block mb-0.5">PERFUMERÍA ELISIR</span>
+                    <h3 class="text-base sm:text-lg font-bold text-amber-300 uppercase tracking-wider">
+                        AL — CEO & CREADOR DE LA MARCA
+                    </h3>
+                </div>
+            </div>
+            <div class="max-w-md border-t md:border-t-0 md:border-l border-amber-500/30 pt-3 md:pt-0 md:pl-6">
+                <p class="text-xs sm:text-sm italic font-serif text-amber-200/90 leading-relaxed">
+                    "Elevando el estándar de la perfumería original en Venezuela. Cada fragancia está cuidadosamente seleccionada para garantizar autenticidad y elegancia en cada gota."
+                </p>
+                <span class="text-[11px] font-bold tracking-widest text-amber-400 uppercase mt-1.5 block">
+                    — AL | Fundador & CEO ELISIR
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. MODAL / LIGHTBOX PARA AMPLIAR IMÁGENES -->
+    <div id="image-modal" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300" onclick="closeImageModal()">
+        <div class="relative max-w-lg w-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-white/20" onclick="event.stopPropagation()">
+            <!-- Botón Cerrar -->
+            <button onclick="closeImageModal()" class="absolute top-3 right-3 bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-black transition-colors z-10">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <!-- Imagen en grande -->
+            <div class="p-6 bg-slate-50 flex items-center justify-center">
+                <img id="modal-img" src="" alt="Vista previa" class="max-h-[60vh] w-auto object-contain rounded-lg">
+            </div>
+
+            <!-- Detalles del Modal -->
+            <div class="p-5 bg-white border-t border-gray-100">
+                <h3 id="modal-title" class="text-lg font-bold text-slate-900 mb-1"></h3>
+                <p id="modal-price" class="text-gold font-black text-xl mb-3"></p>
+                <a id="modal-whatsapp-btn" href="#" target="_blank" 
+                   class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center space-x-2 transition-colors">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Comprar por WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Número de teléfono de WhatsApp
+        const PHONE_NUMBER = "584120000000";
+
+        // Variable global para la tasa del dólar BCV
+        let currentBCVRate = 36.50;
+
+        // Lista de Productos
+        const products = [
+            {
+                id: 1,
+                name: "Cookies & Cream Tubbees",
+                priceUSD: 17.41,
+                size: "50 ml",
+                badge: null,
+                freeShipping: true,
+                image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 2,
+                name: "Pride Eternal Vanille Lattafa",
+                priceUSD: 44.11,
+                size: "100 ml",
+                badge: null,
+                freeShipping: true,
+                image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 3,
+                name: "Red Jeans Tester Versace",
+                priceUSD: 29.02,
+                size: "75 ml",
+                badge: "Tester",
+                freeShipping: true,
+                image: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=600&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 4,
+                name: "Valhalla Rayhaan",
+                priceUSD: 44.11,
+                size: "100 ml",
+                badge: null,
+                freeShipping: true,
+                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 5,
+                name: "Odyssey Mandarin Armaf",
+                priceUSD: 38.50,
+                size: "100 ml",
+                badge: null,
+                freeShipping: true,
+                image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 6,
+                name: "Asad Lattafa",
+                priceUSD: 32.00,
+                size: "100 ml",
+                badge: null,
+                freeShipping: true,
+                image: "https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?w=600&auto=format&fit=crop&q=80"
+            }
+        ];
+
+        const favorites = new Set();
+
+        // Obtener tasa del BCV en tiempo real mediante API
+        async function fetchBCVRate(manualTrigger = false) {
+            const refreshIcon = document.getElementById('bcv-refresh-icon');
+            const dateDisplay = document.getElementById('bcv-date-display');
+            const rateText = document.getElementById('bcv-rate-text');
+            const statusBadge = document.getElementById('bcv-status');
+
+            if (refreshIcon) refreshIcon.classList.add('fa-spin');
+
+            try {
+                const response = await fetch('https://ve.dolarapi.com/v1/dolares/oficial', { cache: 'no-store' });
+
+                if (!response.ok) throw new Error('Error de servidor API BCV');
+
+                const data = await response.json();
+                
+                if (data && data.promedio) {
+                    currentBCVRate = parseFloat(data.promedio);
+                    rateText.innerText = `Bs. ${currentBCVRate.toFixed(2)}`;
+                    
+                    const fechaTxt = data.fechaActualizacion 
+                        ? new Date(data.fechaActualizacion).toLocaleDateString('es-VE', { day: 'numeric', month: 'short', year: 'numeric' })
+                        : 'Hoy';
+                        
+                    dateDisplay.innerText = `Tasa oficial BCV (${fechaTxt})`;
+                    statusBadge.className = "bg-green-500/20 text-green-400 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-green-500/30 flex items-center gap-1";
+                    statusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Automático`;
+                } else {
+                    throw new Error('Formato de tasa inválido');
+                }
+            } catch (error) {
+                console.warn("API principal no disponible. Intentando respaldo...", error);
+                try {
+                    const backupResponse = await fetch('https://pydolarve.org/api/v1/dollar?page=bcv');
+                    const backupData = await backupResponse.json();
+                    if(backupData && backupData.monitors && backupData.monitors.usd) {
+                        currentBCVRate = parseFloat(backupData.monitors.usd.price);
+                        rateText.innerText = `Bs. ${currentBCVRate.toFixed(2)}`;
+                        dateDisplay.innerText = `Tasa BCV Oficial (En vivo)`;
+                    } else {
+                        throw new Error("Respaldo fallido");
+                    }
+                } catch (err2) {
+                    rateText.innerText = `Bs. ${currentBCVRate.toFixed(2)}`;
+                    dateDisplay.innerText = `Tasa BCV del día (Servidor local)`;
+                    statusBadge.className = "bg-yellow-500/20 text-yellow-400 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-yellow-500/30 flex items-center gap-1";
+                    statusBadge.innerHTML = `Línea local`;
+                }
+            } finally {
+                if (refreshIcon) refreshIcon.classList.remove('fa-spin');
+                renderProducts();
+            }
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+
+            container.innerHTML = products.map(product => {
+                const priceVES = (product.priceUSD * currentBCVRate).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                const isFav = favorites.has(product.id);
+                
+                const whatsappMsg = encodeURIComponent(`¡Hola ELISIR! 🌸 Deseo pedir el producto: *${product.name}* (${product.size}) por $${product.priceUSD.toFixed(2)} USD (Equivalente a Bs. ${priceVES} a tasa BCV). ¿Tienen disponibilidad?`);
+                const whatsappUrl = `https://wa.me/${PHONE_NUMBER}?text=${whatsappMsg}`;
+
+                return `
+                <div class="bg-white rounded-2xl p-3 sm:p-4 border border-gray-100 product-shadow flex flex-col justify-between relative group hover:shadow-xl transition-all duration-300">
+                    
+                    <!-- Imagen de Producto -->
+                    <div class="relative bg-gray-50 rounded-xl overflow-hidden mb-3 aspect-square flex items-center justify-center cursor-pointer group"
+                         onclick="openImageModal('${product.image}', '${product.name}', ${product.priceUSD}, '${whatsappUrl}')">
+                        
+                        ${product.badge ? `
+                            <span class="absolute top-2 left-2 bg-black text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full z-10 tracking-wider">
+                                ${product.badge}
+                            </span>
+                        ` : ''}
+
+                        <!-- Botón Favorito -->
+                        <button onclick="event.stopPropagation(); toggleFavorite(${product.id})" 
+                                class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-md shadow-sm flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors z-10"
+                                aria-label="Añadir a Favoritos">
+                            <i class="${isFav ? 'fa-solid text-red-500' : 'fa-regular'} fa-heart text-sm"></i>
+                        </button>
+
+                        <img src="${product.image}" alt="${product.name}" 
+                             class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300">
+                             
+                        <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="bg-black/70 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm">
+                                <i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Ampliar
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Detalles del Producto -->
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-snug mb-2 line-clamp-2 hover:text-gold transition-colors">
+                                ${product.name}
+                            </h3>
+
+                            <div class="flex flex-wrap items-center gap-1.5 mb-3">
+                                <span class="bg-black text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                                    ${product.size}
+                                </span>
+                                ${product.freeShipping ? `
+                                    <span class="bg-black text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                                        ENVÍO GRATIS
+                                    </span>
+                                ` : ''}
+                            </div>
+                        </div>
+
+                        <!-- Precios USD y BCV recalculados dinámicamente -->
+                        <div class="mt-2 pt-2 border-t border-gray-100">
+                            <div class="flex items-baseline space-x-1">
+                                <span class="text-lg sm:text-xl font-extrabold text-slate-900">$${product.priceUSD.toFixed(2)}</span>
+                                <span class="text-[10px] font-bold text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded border border-gray-200">BCV</span>
+                            </div>
+                            <div class="text-xs font-semibold text-emerald-600 mt-0.5">
+                                ≈ Bs. ${priceVES}
+                            </div>
+
+                            <!-- Botón WhatsApp -->
+                            <a href="${whatsappUrl}" target="_blank" 
+                               class="mt-3 w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center space-x-1.5 transition-colors shadow-sm">
+                                <i class="fa-brands fa-whatsapp text-sm"></i>
+                                <span>Pedir por WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function toggleFavorite(id) {
+            if (favorites.has(id)) {
+                favorites.delete(id);
+            } else {
+                favorites.add(id);
+            }
+            document.getElementById('cart-count').innerText = favorites.size;
+            renderProducts();
+        }
+
+        // Modal Lightbox
+        function openImageModal(imgSrc, title, priceUSD, whatsappUrl) {
+            const priceVES = (priceUSD * currentBCVRate).toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            document.getElementById('modal-img').src = imgSrc;
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-price').innerText = `$${priceUSD.toFixed(2)} USD (Bs. ${priceVES})`;
+            document.getElementById('modal-whatsapp-btn').href = whatsappUrl;
+
+            document.getElementById('image-modal').classList.remove('hidden');
+        }
+
+        function closeImageModal() {
+            document.getElementById('image-modal').classList.add('hidden');
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") closeImageModal();
+        });
+
+        // Inicio
+        window.onload = function() {
+            fetchBCVRate();
+        };
+    </script>
+</body>
+</html>
+```
