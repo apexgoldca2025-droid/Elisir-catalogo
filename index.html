@@ -87,7 +87,7 @@
             <!-- Right Icons (Admin, Search & Cart) -->
             <div class="flex items-center space-x-3 sm:space-x-4">
                 <!-- Botón de Login / Admin -->
-                <button onclick="openLoginModal()" id="login-btn" class="text-white hover:text-gold transition-colors p-1 flex items-center space-x-1" title="Iniciar Sesión Admin">
+                <button onclick="openLoginModal()" id="login-btn" class="text-white hover:text-amber-400 transition-colors p-1 flex items-center space-x-1" title="Iniciar Sesión Admin">
                     <i class="fa-solid fa-lock text-lg"></i>
                 </button>
                 <button class="text-white hover:text-gray-300 transition-colors p-1" aria-label="Buscar">
@@ -103,35 +103,30 @@
 
     <!-- 3. SECCIÓN PRINCIPAL HERO -->
     <section class="relative hero-gradient text-white overflow-hidden pt-8 pb-12 px-4 sm:px-8">
-        <!-- Ambient lighting graphics -->
         <div class="absolute inset-0 bg-blue-600/10 backdrop-blur-3xl pointer-events-none"></div>
 
         <div class="max-w-4xl mx-auto text-left relative z-10">
-            <!-- Golden Top Tag Line -->
             <div class="flex items-center space-x-2 mb-3">
                 <div class="w-8 h-[2px] bg-gold"></div>
-                <span class="text-xs font-bold tracking-widest text-gold uppercase">PERFUMERÍA ORIGINAL</span>
+                <span class="text-xs font-bold tracking-widest text-gold uppercase">FABRICANTES DIRECTOS</span>
             </div>
 
-            <!-- Big Title -->
             <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-none mb-4 uppercase text-white">
                 GORRAS DE ALTA CALIDAD<br />ESTILO Y RESISTENCIA.
             </h1>
 
-            <!-- Subtitle -->
             <p class="text-gray-300 text-sm sm:text-lg max-w-md mb-6 font-light leading-relaxed">
                 Somos fabricantes de gorras personalizadas con bordados 3D y materiales de alta calidad.
             </p>
 
-            <!-- Perfume Banner Image Showcase -->
             <div class="my-6 relative flex justify-center items-center py-2">
                 <div class="flex items-end justify-center space-x-2 sm:space-x-4 max-w-md w-full">
-                    <img src="365575.png" 
-                         alt="Gorra Oficial Superior EJB" class="w-1/3 rounded-lg shadow-2xl object-cover h-36 sm:h-48 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-                    <img src="398177 (1).png" 
-                         alt="Gorra Oficial Superior FANB" class="w-2/5 rounded-lg shadow-2xl object-cover h-44 sm:h-56 z-10 transform scale-105 border border-cyan-500/30">
-                    <img src="398316.png" 
-                         alt="Gorra Camuflada REDI CENTRAL" class="w-1/3 rounded-lg shadow-2xl object-cover h-36 sm:h-48 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&auto=format&fit=crop&q=80" 
+                         alt="Gorra Oficial" class="w-1/3 rounded-lg shadow-2xl object-cover h-36 sm:h-48 transform -rotate-3 hover:rotate-0 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?w=400&auto=format&fit=crop&q=80" 
+                         alt="Gorra Oficial FANB" class="w-2/5 rounded-lg shadow-2xl object-cover h-44 sm:h-56 z-10 transform scale-105 border border-cyan-500/30">
+                    <img src="https://images.unsplash.com/photo-1534215754734-18e55d13e346?w=400&auto=format&fit=crop&q=80" 
+                         alt="Gorra Camuflada" class="w-1/3 rounded-lg shadow-2xl object-cover h-36 sm:h-48 transform rotate-3 hover:rotate-0 transition-transform duration-300">
                 </div>
             </div>
         </div>
@@ -186,7 +181,7 @@
     </section>
 
     <!-- 6. SECCIÓN DE PRODUCTOS ("CATÁLOGO DE GORRAS") -->
-    <section id="catalogo-de-gorras" class="max-w-5xl mx-auto px-3 sm:px-6 py-10">
+    <section id="catalogo-gorras" class="max-w-5xl mx-auto px-3 sm:px-6 py-10">
         <div class="text-center mb-8">
             <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Catálogo de Gorras</h2>
             <div class="w-12 h-1 bg-gold mx-auto mt-2 rounded-full"></div>
@@ -309,61 +304,57 @@
     </div>
 
     <script>
-        // Número de teléfono de WhatsApp
         const PHONE_NUMBER = "584120000000";
 
-        // Variable global para la tasa del dólar BCV
         let currentBCVRate = 36.50;
-
-        // Estado de Administrador
         let isAdminLoggedIn = false;
 
-        // Credenciales por defecto
         const ADMIN_USER = "admin";
         const ADMIN_PASS = "1234";
 
-        // Lista de Productos
         let products = [
             {
                 id: 1,
-                name: "Cookies & Cream Tubbees",
+                name: "Gorra EJB Tactica Superior",
                 priceUSD: 17.41,
-                size: "50 ml",
-                badge: null,
+                size: "Ajustable",
+                badge: "Popular",
                 freeShipping: true,
-                image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&auto=format&fit=crop&q=80"
+                image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600&auto=format&fit=crop&q=80"
             },
             {
                 id: 2,
-                name: "Pride Eternal Vanille Lattafa",
-                priceUSD: 44.11,
-                size: "100 ml",
-                badge: null,
+                name: "Gorra Camuflada FANB",
+                priceUSD: 24.50,
+                size: "Ajustable",
+                badge: "Premium",
                 freeShipping: true,
-                image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop&q=80"
+                image: "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?w=600&auto=format&fit=crop&q=80"
             },
             {
                 id: 3,
-                name: "Red Jeans Tester Versace",
-                priceUSD: 29.02,
-                size: "75 ml",
-                badge: "Tester",
+                name: "Gorra Militar Redi Central",
+                priceUSD: 20.00,
+                size: "Ajustable",
+                badge: null,
                 freeShipping: true,
-                image: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=600&auto=format&fit=crop&q=80"
+                image: "https://images.unsplash.com/photo-1534215754734-18e55d13e346?w=600&auto=format&fit=crop&q=80"
             },
             {
                 id: 4,
-                name: "Valhalla Rayhaan",
-                priceUSD: 44.11,
-                size: "100 ml",
-                badge: null,
+                name: "Gorra Tactica Negra Apex",
+                priceUSD: 18.00,
+                size: "Ajustable",
+                badge: "Nuevo",
                 freeShipping: true,
-                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&auto=format&fit=crop&q=80"
-            },
-            {
-                id: 5,
-                name: "Odyssey Mandarin Armaf",
-                priceUSD: 38.50,
-                size: "100 ml",
-                badge: null,
-                freeShipping: true,
+                image: "https://images.unsplash.com/photo-1521369984125-a4ec30be59fe?w=600&auto=format&fit=crop&q=80"
+            }
+        ];
+
+        const favorites = new Set();
+
+        async function fetchBCVRate(manualTrigger = false) {
+            const refreshIcon = document.getElementById('bcv-refresh-icon');
+            const dateDisplay = document.getElementById('bcv-date-display');
+            const rateText = document.getElementById('bcv-rate-text');
+            const statusBadge = docum
